@@ -18,6 +18,19 @@ services:
       #- ./database/:/docker-entrypoint-initdb.d/
     networks:
       - network-gobarber
+
+  db_gobarber_tests:
+    container_name: db_gobarber_tests
+    image: postgres
+    environment:
+      POSTGRES_DB: 'gostack_desafio06_tests'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'docker'
+    ports:
+      - "5433:5432"
+    expose:
+      - "5432"
+
 networks:
   network-gobarber:
     driver: bridge
